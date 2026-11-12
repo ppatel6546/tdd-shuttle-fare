@@ -39,3 +39,12 @@ test("an unknown rider type throws", () => {
 test("part of a km is charged as a full km", () => {
   expect(fareCents(5.5, "adult")).toBe(250);
 });
+
+test("peak hours add a 100-cent surcharge", () => {
+  expect(fareCents(3, "adult", true)).toBe(300);
+});
+
+test("students pay half of the peak surcharge too", () => {
+  expect(fareCents(3, "student", true)).toBe(150);
+});
+
