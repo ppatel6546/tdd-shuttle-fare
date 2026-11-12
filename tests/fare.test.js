@@ -35,3 +35,7 @@ test("a negative distance throws a RangeError", () => {
 test("an unknown rider type throws", () => {
   expect(() => fareCents(3, "pilot")).toThrow("unknown rider type");
 });
+
+test("part of a km is charged as a full km", () => {
+  expect(fareCents(5.5, "adult")).toBe(250);
+});
