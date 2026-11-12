@@ -19,7 +19,7 @@ function fareCents(distanceKm, rider = "adult") {
   if (!Object.hasOwn(DISCOUNTS, rider)) {
     throw new Error(`unknown rider type: ${rider}`);
   }
-  const extraKm = Math.max(0, Math.trunc(distanceKm - INCLUDED_KM));
+  const extraKm = Math.max(0, Math.ceil(distanceKm - INCLUDED_KM));
   const full = BASE_FARE_CENTS + extraKm * PER_EXTRA_KM_CENTS;
   return Math.round(full * DISCOUNTS[rider]);
 }
