@@ -2,6 +2,7 @@ const BASE_FARE_CENTS = 200;
 const INCLUDED_KM = 5;
 const PER_EXTRA_KM_CENTS = 50;
 const DISCOUNTS = { adult: 1.0, student: 0.5, senior: 0.5, child: 0.0 };
+const PEAK_SURCHARGE_CENTS = 100;
 
 /**
  * Returns the shuttle fare in cents.
@@ -26,10 +27,10 @@ function fareCents(distanceKm, rider = "adult", peak = false) {
   let full = BASE_FARE_CENTS + extraKm * PER_EXTRA_KM_CENTS;
 
   if (peak) {
-    full += 100;
-  }
+  full += PEAK_SURCHARGE_CENTS;
+    }
 
   return Math.round(full * DISCOUNTS[rider]);
-}
+    }
 
 module.exports = { fareCents };
