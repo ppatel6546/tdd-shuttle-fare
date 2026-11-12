@@ -1,0 +1,24 @@
+{
+  "name": "tdd-shuttle-fare",
+  "version": "1.0.0",
+  "description": "A shuttle fare calculator built with test-driven development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppatel6546/tdd-shuttle-fare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ppatel6546/tdd-shuttle-fare/issues"
+  },
+  "homepage": "https://github.com/ppatel6546/tdd-shuttle-fare#readme",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
