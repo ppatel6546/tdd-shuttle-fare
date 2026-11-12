@@ -12,15 +12,23 @@ const DISCOUNTS = { adult: 1.0, student: 0.5, senior: 0.5, child: 0.0 };
  *  - Students and seniors pay half. Children ride free.
  *  - A negative distance throws RangeError. An unknown rider type throws Error.
  */
-function fareCents(distanceKm, rider = "adult") {
+
+function fareCents(distanceKm, rider = "adult", peak = false) {
   if (distanceKm < 0) {
     throw new RangeError("distance must be non-negative");
   }
+
   if (!Object.hasOwn(DISCOUNTS, rider)) {
     throw new Error(`unknown rider type: ${rider}`);
   }
+
   const extraKm = Math.max(0, Math.ceil(distanceKm - INCLUDED_KM));
-  const full = BASE_FARE_CENTS + extraKm * PER_EXTRA_KM_CENTS;
+  let full = BASE_FARE_CENTS + extraKm * PER_EXTRA_KM_CENTS;
+
+  if (peak) {
+    full += 100;
+  }
+
   return Math.round(full * DISCOUNTS[rider]);
 }
 
