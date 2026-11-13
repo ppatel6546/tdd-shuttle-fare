@@ -30,10 +30,12 @@ test("children ride free", () => {
 
 test("a negative distance throws a RangeError", () => {
   expect(() => fareCents(-1, "adult")).toThrow(RangeError);
+  expect(() => fareCents(-1)).toThrow("non-negative");
 });
 
 test("an unknown rider type throws", () => {
   expect(() => fareCents(3, "pilot")).toThrow("unknown rider type");
+  expect(() => fareCents(3, "pilot")).toThrow("pilot");
 });
 
 test("part of a km is charged as a full km", () => {
