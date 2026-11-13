@@ -82,3 +82,7 @@ test("a week over the cap costs 1500", () => {
 test("a negative fare in the list is an error", () => {
   expect(() => weeklyTotal([200, -50, 300])).toThrow();
 });
+
+test("default rider is adult", () => {
+  expect(fareCents(3)).toBe(200);
+});
