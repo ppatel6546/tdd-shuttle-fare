@@ -1,4 +1,4 @@
-const { fareCents } = require("../src/fare");
+const { fareCents, weeklyTotal } = require("../src/fare");
 
 test("short trip: adult pays the base fare", () => {
   // Arrange
@@ -63,3 +63,22 @@ test.each([
   expect(fareCents(distanceKm, rider)).toBe(expected);
 });
 
+test("an empty week costs 0", () => {
+  expect(weeklyTotal([])).toBe(0);
+});
+
+test("a week under the cap costs the sum", () => {
+  expect(weeklyTotal([200, 250, 300])).toBe(750);
+});
+
+test("a week of exactly 1500 costs 1500", () => {
+  expect(weeklyTotal([500, 500, 500])).toBe(1500);
+});
+
+test("a week over the cap costs 1500", () => {
+  expect(weeklyTotal([600, 600, 600])).toBe(1500);
+});
+
+test("a negative fare in the list is an error", () => {
+  expect(() => weeklyTotal([200, -50, 300])).toThrow();
+});
